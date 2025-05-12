@@ -25,10 +25,10 @@ public class App {
 
         // Crear componentes MVC
         Tablero modelo = new Tablero();
-        VistaTablero vista = new VistaTablero();
+        VistaTablero vista = new VistaTablero(8); // Tamaño del tablero es 8x8
         ControladorReinas controlador = new ControladorReinas(modelo, vista);
 
-        // Ejecutar la lógica con la posición inicial
-        controlador.mejecutar(fila, columna);
+        // Ejecutar la lógica con la posición inicial proporcionada por el usuario
+        controlador.resolverProblemaDeReinas(fila, columna);
     }
 }

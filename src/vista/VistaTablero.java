@@ -6,23 +6,42 @@ import java.util.List;
 // Vista: muestra el tablero en consola con las soluciones
 public class VistaTablero {
 
+    private int tamanoTablero;
+
+    // Constructor: establece el tamaño del tablero (por defecto 8)
+    public VistaTablero(int tamanoTablero) {
+        this.tamanoTablero = tamanoTablero;
+    }
+
     // Muestra una solución específica
     public void mostrarSolucion(List<Reina> reinas, int index) {
         System.out.println("Solución #" + (index + 1));
-        for (int fila = 0; fila < 8; fila++) {
-            for (int col = 0; col < 8; col++) {
-                boolean hayReina = false;
-                for (Reina r : reinas) {
-                    if (r.mobtenerFila() == fila && r.mobtenerColumna() == col) {
-                        hayReina = true;
-                        break;
-                    }
-                }
-                System.out.print(hayReina ? " ♛ " : " . ");
+        
+        // Crear una matriz de 8x8 vacía
+        char[][] tablero = new char[tamanoTablero][tamanoTablero];
+
+        // Inicializar el tablero con puntos
+        for (int i = 0; i < tamanoTablero; i++) {
+            for (int j = 0; j < tamanoTablero; j++) {
+                tablero[i][j] = '.';  // Casilla vacía
             }
-            System.out.println();
         }
-        System.out.println();
+
+        // Colocar las reinas en el tablero
+        for (Reina reina : reinas) {
+            int fila = reina.mobtenerFila();
+            int columna = reina.mobtenerColumna();
+            tablero[fila][columna] = '♛';  // Representar la reina con '♛'
+        }
+
+        // Imprimir el tablero
+        for (int i = 0; i < tamanoTablero; i++) {
+            for (int j = 0; j < tamanoTablero; j++) {
+                System.out.print(" " + tablero[i][j] + " ");  // Mostrar cada casilla
+            }
+            System.out.println();  // Salto de línea después de cada fila
+        }
+        System.out.println();  // Salto de línea entre soluciones
     }
 
     // Muestra todas las soluciones encontradas

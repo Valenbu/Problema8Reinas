@@ -13,9 +13,10 @@ public class ControladorReinas {
         this.vista = vista;
     }
 
-    public void mejecutar(int fila, int columna) {
+    // Ejecuta el algoritmo de las 8 reinas con la posición inicial especificada
+    public void resolverProblemaDeReinas(int fila, int columna) {
         modelo.mcolocarPrimeraReina(fila, columna);
-        modelo.mresolverDesde(fila + 1, columna);
-        vista.mmostrarTodas(modelo.mobtenerSoluciones());
+        modelo.mresolverDesde(fila + 1, columna);  // Inicia desde la siguiente fila
+        vista.mmostrarTodas(modelo.mobtenerSoluciones());  // Muestra todas las soluciones encontradas
     }
 }
